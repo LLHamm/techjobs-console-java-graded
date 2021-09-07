@@ -95,11 +95,20 @@ public class JobData {
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
-        // load data, if not already loaded
         loadData();
+        // Initialize empty ArrayList and name it
+        ArrayList<HashMap<String, String>> result = new ArrayList<>();
 
-        // TODO - implement this method
-        return null;
+        for (HashMap<String, String> row : allJobs) {
+            for (String s : row.values()) {
+                if (s.toLowerCase().contains(value.toLowerCase())) {
+                    result.add(row);
+                    break;
+                }
+            }
+        }
+
+        return result;
     }
 
     /**
